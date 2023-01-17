@@ -20,7 +20,7 @@ class NewCommentForm(forms.Form):
     comment = forms.CharField(label='',max_length=100,widget=forms.TextInput(attrs={'placeholder': 'Comment the article'}))
 
 def getCategories():
-    return set(list(Listing.objects.values_list('category',flat=True)))
+    return sorted(set(list(Listing.objects.values_list('category',flat=True))))
 
 
 def index(request):
