@@ -1,0 +1,30 @@
+#container_create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.332);
+    padding: 15px;
+    border-radius: 5px;
+
+    input {
+      width: 300px;
+      margin: 15px 0;
+      border-radius: 5px;
+      border: none;
+    }
+    textarea.description {
+      width: 300px;
+      height: 80px;
+      border-radius: 5px;
+      resize: none;
+    }
+    button {
+      align-self: center;
+    }
+  }
+}

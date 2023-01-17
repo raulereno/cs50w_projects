@@ -1,0 +1,28 @@
+{%extends "auctions/layout.html"%}
+
+{%block body%}
+
+    <h2>Watch List</h2>
+    <ul class="container_listing">
+        {%for list in listing %}
+            <li>
+                <a class="card" href="{%url 'listing' list.id%}" style="width: 18rem; text-decoration:none; color:black;">
+                    <img class="card-img-top" src={{list.img}} alt={{list.title}}>
+                    <div class="card-body">
+                        <h5 class="card-title">{{article.title}}</h5>
+                        <p class="card-text">{{list.description}}</p>
+                        {%if list.sold%}
+                            <h4 class="card-title">New owner: {{list.owner | title}}</h4>
+                        {%else%}
+                            <p class="card-text">Owner: {{list.owner | title}}</p>
+                            <p class="card-text">Current Price: ${{list.startBid}}</p>
+                        {%endif%}
+                    </div>
+                </a>
+            </li>
+        {%empty%}
+            <h3>No auctions in the watch list</h3>
+        {%endfor%}
+    </ul>
+
+{%endblock%}

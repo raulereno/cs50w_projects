@@ -1,0 +1,321 @@
+.container_listing_item {
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+.container_listing_item .message_winner {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.container_listing_item .listing_item_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_listing_item .listing_item_header h2 {
+  font-size: 40px;
+}
+.container_listing_item .listing_item_header form button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.container_listing_item .listing_item_header form button svg {
+  width: 35px;
+  height: 35px;
+  fill: rgb(182, 0, 0);
+  transition: 0.3s;
+}
+.container_listing_item .listing_item_header form button svg:hover {
+  transform: scale(1.05);
+}
+.container_listing_item .listing_item_header a {
+  transition: 0.3s;
+  margin-left: 10px;
+  border: 0;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.755);
+}
+.container_listing_item .listing_item_header a:hover {
+  transform: scale(1.05);
+  background-color: grey;
+  color: black;
+}
+.container_listing_item .listing_item_info {
+  background-color: rgba(128, 128, 128, 0.266);
+  margin-bottom: 15px;
+  width: 300px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.container_listing_item .listing_item_info p {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 0;
+}
+.container_listing_item .listing_item_info .bid_price {
+  font-weight: 500;
+  font-size: 30px;
+  padding-top: 0;
+  padding-bottom: 15px;
+}
+.container_listing_item .listing_item_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container_listing_item .listing_item_main img {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px 5px 0 0;
+}
+.container_listing_item .listing_item_main .listing_item_comments {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.container_listing_item .listing_item_main .bids,
+.container_listing_item .listing_item_main .comments {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5px;
+}
+.container_listing_item .listing_item_main .bids h3,
+.container_listing_item .listing_item_main .comments h3 {
+  text-align: center;
+}
+.container_listing_item .listing_item_main .bids ul,
+.container_listing_item .listing_item_main .comments ul {
+  padding: 0;
+}
+.container_listing_item .listing_item_main .bids form,
+.container_listing_item .listing_item_main .comments form {
+  display: flex;
+  align-items: center;
+}
+.container_listing_item .listing_item_main .bids form input,
+.container_listing_item .listing_item_main .comments form input {
+  height: 38px;
+  margin-right: 3px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(128, 128, 128, 0.166);
+  text-align: center;
+}
+.container_listing_item .listing_item_main .bids form input::-moz-placeholder, .container_listing_item .listing_item_main .comments form input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.583);
+}
+.container_listing_item .listing_item_main .bids form input:-ms-input-placeholder, .container_listing_item .listing_item_main .comments form input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.583);
+}
+.container_listing_item .listing_item_main .bids form input::placeholder,
+.container_listing_item .listing_item_main .comments form input::placeholder {
+  color: rgba(0, 0, 0, 0.583);
+}
+.container_listing_item .listing_item_main .bids {
+  position: relative;
+  min-width: 500px;
+}
+.container_listing_item .listing_item_main .bids table {
+  width: 500px;
+  margin-bottom: 80px;
+}
+.container_listing_item .listing_item_main .bids table thead tr th,
+.container_listing_item .listing_item_main .bids table thead tr td,
+.container_listing_item .listing_item_main .bids table tbody tr th,
+.container_listing_item .listing_item_main .bids table tbody tr td {
+  text-align: center;
+}
+.container_listing_item .listing_item_main .bids form {
+  position: absolute;
+  bottom: 3px;
+  left: 160px;
+}
+.container_listing_item .listing_item_main .bids form input {
+  width: 100px;
+}
+.container_listing_item .listing_item_main .bids .errorlist {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: red;
+}
+.container_listing_item .listing_item_main .comments {
+  background-color: rgba(128, 128, 128, 0.38);
+  position: relative;
+  width: 500px;
+  padding: 15px;
+}
+.container_listing_item .listing_item_main .comments ul {
+  list-style: none;
+  margin-bottom: 60px;
+}
+.container_listing_item .listing_item_main .comments ul li {
+  margin-left: 10px;
+}
+.container_listing_item .listing_item_main .comments form {
+  position: absolute;
+  bottom: 3px;
+  left: 110px;
+}
+.container_listing_item .listing_item_main .comments form input {
+  width: 160px;
+}
+
+#container_create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#container_create form {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.332);
+  padding: 15px;
+  border-radius: 5px;
+}
+#container_create form input {
+  width: 300px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: none;
+}
+#container_create form textarea.description {
+  width: 300px;
+  height: 80px;
+  border-radius: 5px;
+  resize: none;
+}
+#container_create form button {
+  align-self: center;
+}
+
+.container_login-register {
+  background-color: rgba(128, 128, 128, 0.204);
+  width: 420px;
+  padding: 25px;
+  position: absolute;
+  bottom: 150px;
+  left: 450px;
+  border-radius: 5px;
+}
+.container_login-register form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.container_login-register form input.submit_button {
+  width: 100px;
+  align-self: flex-end;
+}
+.container_login-register p {
+  text-align: end;
+}
+.container_login-register p a {
+  color: blue;
+}
+.container_login-register p a:hover {
+  text-decoration: underline;
+}
+
+.register {
+  bottom: 70px;
+}
+
+body {
+  min-height: 90vh;
+}
+
+h2 {
+  text-align: center;
+  margin: 25px 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+}
+
+#container_nav {
+  border-bottom: 2px gray solid;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+}
+#container_nav #logo {
+  transition: 0.5s;
+  background-color: transparent;
+  border-radius: 100%;
+}
+#container_nav #logo img {
+  width: 60px;
+  height: 60px;
+  margin-left: 15px;
+}
+#container_nav #logo:hover {
+  transform: scale(1.05);
+  background-color: rgba(128, 128, 128, 0.365);
+}
+#container_nav ul.nav {
+  align-items: center;
+}
+#container_nav ul.nav li {
+  background-color: rgba(128, 128, 128, 0.252);
+  border-radius: 15px;
+  margin: 0 5px 0 5px;
+  transition: 0.3s;
+}
+#container_nav ul.nav li p {
+  margin: 0;
+}
+#container_nav ul.nav li:hover {
+  background-color: rgba(128, 128, 128, 0.741);
+}
+#container_nav ul.nav li:hover a {
+  color: black;
+}
+#container_nav ul.nav li.info {
+  background-color: transparent;
+}
+#container_nav ul.nav li.info:hover {
+  background-color: transparent;
+}
+
+.container_listing {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 15px;
+}
+.container_listing li {
+  justify-self: center;
+  transition: 0.3s;
+}
+.container_listing li:hover {
+  transform: scale(1.03);
+}
+.container_listing li a.card {
+  min-height: 520px;
+  max-height: 520px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.container_listing li a.card img.card-img-top {
+  width: 100%;
+  height: 250px;
+}
+.container_listing li a.card h4,
+.container_listing li a.card h5 {
+  text-align: center;
+}/*# sourceMappingURL=styles.css.map */
