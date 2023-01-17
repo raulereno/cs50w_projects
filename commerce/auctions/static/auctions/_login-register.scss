@@ -1,31 +1,36 @@
 .container_login-register {
-  background-color: rgba(128, 128, 128, 0.204);
-  width: 420px;
-  padding: 25px;
-  position: absolute;
-  bottom: 150px;
-  left: 450px;
-  border-radius: 5px;
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    input.submit_button {
-      width: 100px;
-      align-self: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .login,
+  .register {
+    margin-top: 25px;
+    background-color: rgba(128, 128, 128, 0.204);
+    width: 420px;
+    padding: 25px;
+
+    border-radius: 5px;
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+      input.submit_button {
+        width: 100px;
+        align-self: flex-end;
+      }
     }
-  }
-  p {
-    text-align: end;
-    a {
-      color: blue;
-      &:hover {
-        text-decoration: underline;
+    p {
+      text-align: end;
+      a {
+        color: blue;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }
 }
 
 .register {
-  bottom: 70px;
 }

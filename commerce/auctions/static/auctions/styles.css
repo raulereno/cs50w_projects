@@ -193,35 +193,41 @@
 }
 
 .container_login-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.container_login-register .login,
+.container_login-register .register {
+  margin-top: 25px;
   background-color: rgba(128, 128, 128, 0.204);
   width: 420px;
   padding: 25px;
-  position: absolute;
-  bottom: 150px;
-  left: 450px;
   border-radius: 5px;
 }
-.container_login-register form {
+.container_login-register .login form,
+.container_login-register .register form {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
-.container_login-register form input.submit_button {
+.container_login-register .login form input.submit_button,
+.container_login-register .register form input.submit_button {
   width: 100px;
   align-self: flex-end;
 }
-.container_login-register p {
+.container_login-register .login p,
+.container_login-register .register p {
   text-align: end;
 }
-.container_login-register p a {
+.container_login-register .login p a,
+.container_login-register .register p a {
   color: blue;
 }
-.container_login-register p a:hover {
+.container_login-register .login p a:hover,
+.container_login-register .register p a:hover {
   text-decoration: underline;
-}
-
-.register {
-  bottom: 70px;
 }
 
 body {
