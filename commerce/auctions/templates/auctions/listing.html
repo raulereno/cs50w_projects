@@ -41,7 +41,13 @@
             <p>{{listing.description}}</p>
             {%if listing.sold%}
             {%else%}
-            <p class="bid_price">${{listing.startBid}}</p>
+            <p class="bid_price">
+                {%if listing.biggest_bid != 0.00 %}
+                ${{listing.biggest_bid}}
+             {%else%}
+                 ${{listing.startBid}}
+             {%endif%}
+            </p>
         </div>
         <div class="listing_item_comments">
             <div class="bids">

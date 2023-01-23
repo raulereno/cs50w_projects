@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django import forms
 from .models import User,Listing,WatchList,Bid,Comment
-
+from django.contrib.auth.decorators import login_required
 class NewBidForm(forms.Form):
     bid = forms.DecimalField(label="",min_value=1,widget=forms.TextInput(attrs={'placeholder': 'Enter a bid'}) )
 
@@ -22,10 +22,35 @@ class NewCommentForm(forms.Form):
 def getCategories():
     return sorted(set(list(Listing.objects.values_list('category',flat=True))))
 
+def biggest_bid_all(listings):
+    aux = list(listings)
+    
+    for element in aux:
+        biggest_bid= Bid.objects.filter(listing=element.id).order_by('price').reverse().first()
+        print(biggest_bid)
+        if biggest_bid is not None:
+            element.biggest_bid = biggest_bid.price
+        else:
+            element.biggest_bid =0.00
+        element.save()
+        
+    return aux    
+     
+def biggest_bid_one(listing):
+    biggest_bid= Bid.objects.filter(listing=listing.id).order_by('price').reverse().first()
+    
+    if biggest_bid is not None:
+            listing.biggest_bid = biggest_bid.price
+    else:
+        listing.biggest_bid =0.00
+    
+    return listing
+    
 
 def index(request):
     listings= Listing.objects.all().filter(sold=False)
     
+    listings= biggest_bid_all(listings)
     return render(request, "auctions/index.html",{
         "listings": listings,
         "categories":getCategories()
@@ -98,7 +123,7 @@ def register(request):
         return render(request, "auctions/register.html",{
             "categories":getCategories()
         })
-
+        
 def create_listing(request):
     if request.method == "POST":
         form = NewListingForm(request.POST)
@@ -117,6 +142,7 @@ def listing(request,listing_id):
     
     listing = Listing.objects.get(pk= listing_id)
     isInWatchlist= False
+    listing=biggest_bid_one(listing)
     
     if request.user.is_authenticated is not False:
         watchlist = list(WatchList.objects.get(user = request.user).watchlist.all()) 
@@ -159,7 +185,6 @@ def addWatchList(request, listing_id):
         else:
             return HttpResponseRedirect(reverse("login"))
       
-    
 def removeWatchList(request, listing_id):
     if request.method == "POST":
         listing = Listing.objects.get(pk = listing_id)
@@ -168,6 +193,7 @@ def removeWatchList(request, listing_id):
         
         return HttpResponseRedirect(reverse("listing",args=[listing_id]))
     
+
 def addBid(request,listing_id):
     if request.method == "POST":
         if request.user.is_authenticated:
@@ -175,10 +201,9 @@ def addBid(request,listing_id):
             newBid = float(request.POST['bid'])
             listing = Listing.objects.get(pk=listing_id)
             
-            if newBid > listing.startBid:
+            if newBid > biggest_bid_one(listing).biggest_bid and newBid > listing.startBid:
                 Bid.objects.create(price=newBid,listing=listing,user= request.user)
-                listing.startBid = newBid
-                listing.save()
+                
                 return HttpResponseRedirect(reverse("listing",args=[listing_id]))
             else:
                 form.add_error('bid',f"Your bid should be higher than {listing.startBid}")
@@ -226,7 +251,6 @@ def addComment(request,listing_id):
                     "categories":getCategories()
                 })    
         
-              
 def close_auction(request,listing_id):
     listing = Listing.objects.get(pk=listing_id)
     highestBid = Bid.objects.filter(listing=listing_id).order_by('price').reverse().first()

@@ -9,7 +9,6 @@ class User(AbstractUser):
     def __str__(self):
         return f"{self.username}"
     
-
 class Listing(models.Model):
     id= models.BigAutoField(primary_key=True)
     title= models.CharField(max_length=25)
@@ -19,6 +18,7 @@ class Listing(models.Model):
     startBid = models.DecimalField(decimal_places=2,max_digits=8)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="own_listing")
     sold = models.BooleanField(default=False)
+    biggest_bid = models.DecimalField(decimal_places=2,max_digits=8,default=0)
     
     def __str__(self):
         return f"{self.title}: {self.owner}"
