@@ -1,3 +1,31 @@
 textarea {
-    min-height: 400px;
+  min-height: 400px;
+}
+.container_emails {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 15px;
+}
+.container_emails li {
+  border: 1px solid rgba(0, 0, 0, 0.461);
+  background-color: rgba(128, 128, 128, 0.283);
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  transition: 0.1s;
+}
+.container_emails .noRead {
+  font-weight: bolder;
+  background-color: white;
+}
+.container_emails li:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  border: 2px solid black;
+}
+
+p {
+  margin: 0;
 }
