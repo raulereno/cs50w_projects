@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .querySelector("#compose-form")
     .addEventListener("submit", send_email);
+
+  document.querySelector("#clear_history").addEventListener("click", () => {
+    document.querySelector("#compose-body").value = "";
+  });
   // By default, load the inbox
   load_mailbox("inbox");
 });
@@ -114,7 +118,18 @@ const get_email = async (event) => {
   timestamp.innerHTML = `<b>Timesstamp:</b> ${email.timestamp}`;
   reply_button.innerHTML = "Reply";
 
-  body.innerHTML = email.body;
+  const verify = email.body.includes("On");
+
+  if (verify) {
+    const history = email.body.split("\n").filter((e) => e !== "");
+    const lastEmail = history.pop();
+
+    body.innerHTML = `${history.join("<br>")}<br>On ${email.timestamp} ${
+      email.sender
+    } wrote: ${lastEmail}<br>`;
+  } else {
+    body.innerHTML = email.body;
+  }
 
   body_email.appendChild(sender);
   body_email.appendChild(recipients);
@@ -194,17 +209,16 @@ const replyEmail = (email) => {
   const compose = document.querySelector("#compose-body");
 
   const verify = email.body.includes("On");
+
   if (verify) {
     const history = email.body.split("\n").filter((e) => e !== "");
-    history.forEach((oldMail) => {
-      if (oldMail.includes("On")) {
-        compose.value += `${oldMail}\n`;
-      } else {
-        compose.value += `On ${email.timestamp} ${email.sender} wrote: ${email.body}. `;
-      }
-    });
-    console.log(compose.value);
+    const lastEmail = history.pop();
+    console.log(history);
+
+    compose.value = `${history.join("\n")}\nOn ${email.timestamp} ${
+      email.sender
+    } wrote: ${lastEmail}\n`;
   } else {
-    compose.value = `On ${email.timestamp} ${email.sender} wrote: ${email.body}. `;
+    compose.value = `On ${email.timestamp} ${email.sender} wrote: ${email.body}. \n`;
   }
 };
